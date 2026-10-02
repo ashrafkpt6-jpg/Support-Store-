@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support Store — Shop More • Save More</title>
+<style>
+:root{--g:#07883f;--gd:#05652f;--bg:#f6faf8;--dark:#101820}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#17201b}
+.top{background:var(--g);color:white;padding:9px 5%;font-size:13px;display:flex;justify-content:space-between}
+.nav{background:white;padding:18px 5%;display:flex;gap:24px;align-items:center;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0001}
+.logo{font-size:28px;font-weight:800;color:var(--dark);white-space:nowrap}.logo span{color:var(--g)}
+.search{flex:1;display:flex;max-width:600px}.search input{flex:1;padding:14px;border:1px solid #ddd;border-radius:25px 0 0 25px}.search button,.btn{border:0;background:var(--g);color:white;padding:12px 20px;border-radius:0 25px 25px 0;cursor:pointer}
+.nav a{color:#222;text-decoration:none;font-weight:600}.cart{cursor:pointer;font-weight:700}
+.hero{margin:24px 5%;border-radius:22px;background:linear-gradient(110deg,#e9f7ef,#fff);padding:55px 6%;display:flex;justify-content:space-between;align-items:center;overflow:hidden}
+.hero h1{font-size:48px;margin:8px 0}.hero h1 span{color:var(--g)}.hero p{font-size:18px}.shop{display:inline-block;background:var(--g);color:white;text-decoration:none;padding:14px 25px;border-radius:8px;font-weight:700}
+.hero-art{font-size:100px}.wrap{max-width:1200px;margin:auto;padding:10px 5%}h2{margin-top:32px}
+.cats,.products{display:grid;gap:14px}.cats{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}.cat{background:white;padding:22px 10px;text-align:center;border-radius:12px;border:1px solid #e5e5e5;cursor:pointer}
+.products{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}.card{background:white;border-radius:14px;padding:14px;border:1px solid #e5e5e5;box-shadow:0 3px 12px #0000000b}.pic{height:150px;background:#f1f5f3;border-radius:10px;display:grid;place-items:center;font-size:65px}.price{color:var(--g);font-size:20px;font-weight:800}.old{text-decoration:line-through;color:#999;font-size:13px}.add{width:100%;margin-top:10px;border:0;background:var(--g);color:#fff;padding:11px;border-radius:7px;cursor:pointer}
+.features{margin:30px 0;display:grid;grid-template-columns:repeat(4,1fr);background:#e9f7ef;border-radius:12px}.feature{padding:20px;text-align:center}
+footer{margin-top:40px;background:var(--dark);color:white;padding:40px 5%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}footer a{color:#ddd;display:block;margin:8px 0;text-decoration:none}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:10}.box{background:white;width:min(520px,92%);margin:7vh auto;padding:25px;border-radius:15px;max-height:85vh;overflow:auto}.close{float:right;cursor:pointer;font-size:24px}.box input,.box textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ddd;border-radius:7px}.checkout{width:100%;padding:13px;background:var(--g);color:white;border:0;border-radius:8px;font-weight:bold}
+@media(max-width:750px){.top{display:none}.nav{flex-wrap:wrap;padding:13px 4%}.search{order:3;flex-basis:100%}.hero{padding:35px 7%}.hero h1{font-size:34px}.hero-art{font-size:60px}.features{grid-template-columns:1fr 1fr}footer{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="top"><span>♥ Trusted | Quality Products | Cash on Delivery All Over Pakistan</span><span>Free Delivery on Orders Above Rs. 3000</span></div>
+<nav class="nav">
+  <div class="logo">Support <span>Store</span></div>
+  <div class="search"><input id="search" placeholder="Search for products..." oninput="render()"><button>🔍</button></div>
+  <a href="#products">Products</a><a href="#categories">Categories</a>
+  <div class="cart" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</div>
+</nav>
+<section class="hero">
+  <div><small>YOUR TRUSTED ONLINE STORE</small><h1>Support <span>Store</span></h1><p>Best Products &nbsp; | &nbsp; Lowest Prices &nbsp; | &nbsp; Cash on Delivery</p><a class="shop" href="#products">Shop Now →</a></div>
+  <div class="hero-art">📱 🎧 👟 👜</div>
+</section>
+<main class="wrap">
+<h2 id="categories">Shop by Category</h2>
+<div class="cats">
+<div class="cat" onclick="filterCat('Fashion')">👕<br>Fashion</div><div class="cat" onclick="filterCat('Electronics')">🎧<br>Electronics</div><div class="cat" onclick="filterCat('Shoes')">👟<br>Shoes</div><div class="cat" onclick="filterCat('Accessories')">⌚<br>Accessories</div><div class="cat" onclick="filterCat('Home')">🏠<br>Home & Living</div><div class="cat" onclick="filterCat('Beauty')">💄<br>Beauty</div>
+</div>
+<h2 id="products">Featured Products</h2><div class="products" id="grid"></div>
+<div class="features"><div class="feature">🚚<b> Fast Delivery</b><br>All Over Pakistan</div><div class="feature">🔒<b> Safe & Secure</b><br>COD Available</div><div class="feature">⭐<b> Best Quality</b><br>Trusted Products</div><div class="feature">💬<b> 24/7 Support</b><br>Easy Ordering</div></div>
+</main>
+<footer><div><h2>Support Store</h2><p>Shop More • Save More</p><p>Your trusted online shopping store in Pakistan.</p></div><div><h3>Quick Links</h3><a href="#">Home</a><a href="#products">All Products</a><a href="#categories">Categories</a></div><div><h3>Customer Service</h3><a href="#">Track Order</a><a href="#">Return & Refund</a><a href="#">Terms & Conditions</a></div><div><h3>Contact</h3><p>📞 +92 305 5915155 / +92 300 2598339</p><p>📍 Pakistan</p><p>WhatsApp ordering available</p></div></footer>
+
+<div class="modal" id="modal"><div class="box"><span class="close" onclick="closeCart()">×</span><h2>Your Cart</h2><div id="cart"></div><hr><form onsubmit="order(event)"><input id="name" required placeholder="Your name"><input id="phone" required placeholder="Mobile number"><textarea id="address" required placeholder="Delivery address"></textarea><button class="checkout">Place Order on WhatsApp</button></form></div></div>
+<script>
+const products=[
+{name:"TWS Wireless Earbuds",cat:"Electronics",price:1999,old:2999,icon:"🎧"},
+{name:"Smart Watch",cat:"Accessories",price:2499,old:4000,icon:"⌚"},
+{name:"Men's Sports Shoes",cat:"Shoes",price:2999,old:4500,icon:"👟"},
+{name:"Women's Handbag",cat:"Fashion",price:2199,old:3500,icon:"👜"},
+{name:"Mobile Accessories",cat:"Electronics",price:999,old:1499,icon:"📱"},
+{name:"Air Fryer",cat:"Home",price:12999,old:16999,icon:"🍳"},
+{name:"Beauty Care Set",cat:"Beauty",price:1799,old:2500,icon:"💄"},
+{name:"Men's Casual Shirt",cat:"Fashion",price:1599,old:2200,icon:"👕"}
+];
+let cart=[], cat="";
+function render(){let q=document.getElementById("search").value.toLowerCase();let list=products.filter(p=>(!cat||p.cat===cat)&&(!q||p.name.toLowerCase().includes(q)));document.getElementById("grid").innerHTML=list.map((p,i)=>`<div class="card"><div class="pic">${p.icon}</div><h3>${p.name}</h3><small>${p.cat} • Quality Product</small><p><span class="price">Rs. ${p.price.toLocaleString()}</span> <span class="old">Rs. ${p.old.toLocaleString()}</span></p><button class="add" onclick="add('${p.name}')">🛒 Add to Cart</button></div>`).join("")||"<p>No products found.</p>"}
+function filterCat(c){cat=c;document.getElementById("search").value="";render();location.hash="products"}
+function add(name){cart.push(products.find(p=>p.name===name));document.getElementById("count").textContent=cart.length;alert(name+" added to cart!")}
+function openCart(){document.getElementById("modal").style.display="block";document.getElementById("cart").innerHTML=cart.length?cart.map((p,i)=>`<p>${i+1}. ${p.name} — <b>Rs. ${p.price.toLocaleString()}</b></p>`).join("")+"<h3>Total: Rs. "+cart.reduce((a,p)=>a+p.price,0).toLocaleString()+"</h3>":"<p>Your cart is empty.</p>"}
+function closeCart(){document.getElementById("modal").style.display="none"}
+function order(e){e.preventDefault();if(!cart.length){alert("Please add a product first.");return}let total=cart.reduce((a,p)=>a+p.price,0);let text=`Support Store Order%0AName: ${name.value}%0APhone: ${phone.value}%0AAddress: ${address.value}%0AItems: ${cart.map(p=>p.name).join(", ")}%0ATotal: Rs. ${total}`;window.open("https://wa.me/923055915155?text="+text,"_blank")}
+render();
+</script>
+</body></html>
